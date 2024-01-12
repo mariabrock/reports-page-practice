@@ -4,6 +4,7 @@ html, body { height: 100%; }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #878787;
 }
 
 .container {
@@ -13,9 +14,9 @@ body {
 
 }
 
-h1,
-h2 {
-  color: #878787;
-  text-align: left;
-  margin-bottom: 20px;
-}
+/*h1,*/
+/*h2 {*/
+/*  color: #878787;*/
+/*  text-align: left;*/
+/*  margin-bottom: 20px;*/
+/*}*/
