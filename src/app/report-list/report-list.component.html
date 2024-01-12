@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="filter-row">
+    <mat-form-field class="filter-select" appearance="outline">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" placeholder="Search Reports" />
+      <mat-icon matSuffix class="material-icons">search</mat-icon>
+    </mat-form-field>
+
+    <div class="button-group">
+      <mat-icon class="sort material-icons">sort_by_alpha</mat-icon>
+
+    <mat-button-toggle-group name="ingredients" aria-label="Ingredients" multiple>
+      <mat-button-toggle value="flour">One</mat-button-toggle>
+      <mat-button-toggle value="eggs">Two</mat-button-toggle>
+      <mat-button-toggle value="sugar">Three</mat-button-toggle>
+    </mat-button-toggle-group>
+    </div>
+
+
+  </div>
+
+
+  <div class="report-container">
+    <h2>All Reports</h2>
+    <mat-card class="report clickable"
+              (click)="goToReport()">
+      <mat-icon>summarize</mat-icon>
+      <div class="report-info">
+        <p class="report-name">report name</p>
+        <p class="sub-title">report description</p>
+      </div>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.header {
+  height: 70px;
+  width: 100%;
+  background-color: darkseagreen;
+}
+
+.sidebar {
+  position: absolute;
+  height: 100%;
+  width: 70px;
+  background-color: lavender;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+}
+
+/*.navigation-bar {*/
+/*  position: absolute;*/
+/*  top: $banner-height;*/
+/*  bottom: 0;*/
+/*  left: 0;*/
+/*  width: $sidebar-width;*/
+/*  background-color: $selected-color;*/
+/*  padding-top: 15px;*/
+
+/*  box-shadow: 0 0 2px 2px $divider-color;*/
+/*  z-index: 10;*/
+
+/*  & .navigation-icons {*/
+/*    & mat-icon {*/
+/*      display: block;*/
+/*      margin-bottom: 35px;*/
+/*      font-size: 22px;*/
+/*      color: $icon-color;*/
+/*      text-align: center;*/
+/*      cursor: pointer;*/
+/*      outline: none;*/
+/*    }*/
+/*  }*/
+/*}*/
