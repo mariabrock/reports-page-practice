@@ -1,7 +1,7 @@
 <div class="container">
   <div class="filter-row">
 
-    <mat-form-field class="" appearance="outline">
+    <mat-form-field class="input" appearance="outline">
       <input matInput type="text" placeholder="Search Reports" />
       <mat-icon matSuffix class="material-icons">search</mat-icon>
     </mat-form-field>
@@ -11,10 +11,15 @@
                 [class.sorted]="sorted"
       >sort_by_alpha</mat-icon>
 
-      <mat-button-toggle-group name="filters" aria-label="filters" multiple>
-        <mat-button-toggle value="flour">One</mat-button-toggle>
-        <mat-button-toggle value="eggs">Two</mat-button-toggle>
-        <mat-button-toggle value="sugar">Three</mat-button-toggle>
+      <mat-button-toggle-group  [value]="filteredGroupId" name="filters" aria-label="filters" multiple>
+        <mat-button-toggle
+          *ngFor="let group of reportGroups"
+          (change)="filterGroup(group.id)"
+          [value]="group.id"
+          [matTooltip]="group.groupName"
+          matTooltipPosition="above"
+          matTooltipShowDelay="250"
+        ><mat-icon [fontIcon]="group.iconUrl"></mat-icon></mat-button-toggle>
       </mat-button-toggle-group>
     </div>
 
@@ -22,46 +27,25 @@
 
 <!--  <ng-container *ngIf="pinnedReports.length > 0">-->
 <!--    <span class="title">Pinned Reports</span>-->
-<!--    <ng-container [ngTemplateOutlet]="reportList" [ngTemplateOutletContext]="{reports: pinnedReports}"></ng-container>-->
+<!--    <ng-container [ngTemplateOutlet]="reportList" [ngTemplateOutletContext]="{report: pinnedReports}"></ng-container>-->
 <!--  </ng-container>-->
 
 <!--  <ng-container>-->
 <!--    <span class="title"> {{ filteredGroupId !== undefined || hasSearchText ? 'Filtered' : 'All' }} Reports </span>-->
-<!--    <ng-container [ngTemplateOutlet]="reportList" [ngTemplateOutletContext]="{reports: unpinnedReports}"></ng-container>-->
+<!--    <ng-container [ngTemplateOutlet]="reportList" [ngTemplateOutletContext]="{report: unpinnedReports}"></ng-container>-->
 <!--  </ng-container>-->
 
-<!--  <ng-template #reportList let-reports="reports">-->
-    <div class="report-container">
+<!--  <ng-template #reportList >-->
+    <div class="reportList-container" *ngFor="let group of reportGroups">
       <mat-card class="report clickable"
-                (click)="goToReport(report)">
+                (click)="goToReport(report)"
+                *ngFor="let report of allReports; let i = index">
         <mat-icon class="report-icon">summarize</mat-icon>
         <div class="report-info">
-          <p class="report-name">Name</p>
-          <p class="sub-title">Description</p>
+          <p class="group-name">{{ group.groupName }}</p>
+          <p class="report-name">{{ group.reports[i].displayName }}</p>
+          <p class="sub-title">{{ group.reports[i].description }}</p>
         </div>
-
-<!--        <ng-container *ngIf="report.pinned; else notPinned">-->
-<!--          <mat-icon-->
-<!--            fontSet="fas"-->
-<!--            fontIcon="fa-thumbtack"-->
-<!--            inline-->
-<!--            matTooltip="Unpin Report"-->
-<!--            matTooltipPosition="above"-->
-<!--            matTooltipShowDelay="250"-->
-<!--            (click)="unpinReport(report, $event)"></mat-icon>-->
-<!--        </ng-container>-->
-
-<!--        <ng-template #notPinned>-->
-<!--          <mat-icon-->
-<!--            class="pin-icon"-->
-<!--            fontSet="fas"-->
-<!--            fontIcon="fa-thumbtack"-->
-<!--            inline-->
-<!--            matTooltip="Pin Report"-->
-<!--            matTooltipPosition="above"-->
-<!--            matTooltipShowDelay="250"-->
-<!--            (click)="pinReport(report, $event)"></mat-icon>-->
-<!--        </ng-template>-->
       </mat-card>
     </div>
 <!--</ng-template>-->

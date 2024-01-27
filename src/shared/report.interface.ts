@@ -1,7 +1,8 @@
-export interface Reports {
+export interface Report {
   id: number;
-  displayName: string;
+  groupName: string;
   uiHandle: string;
+  iconUrl: string;
   reports:[
     {
       id: number,
